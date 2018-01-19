@@ -25,4 +25,19 @@
       </plugin>
     </plugins>
   </build>
+   <dependencies>
+        <!-- Dépendance vers Mojarra : l’implémentation de référence de JSF 
+            2.2 -->
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.faces</artifactId>
+            <version>2.2.14</version>
+        </dependency>
+        <!-- Dépendance vers la librairie JSTL -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+    </dependencies>
 </project>
