@@ -11,4 +11,7 @@
     <url-pattern>/faces/*</url-pattern>
     <url-pattern>*.jsf</url-pattern>
   </servlet-mapping>
+   <session-config> 
+        <session-timeout>1</session-timeout>
+    </session-config>
 </web-app>
