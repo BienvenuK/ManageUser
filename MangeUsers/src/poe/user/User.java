@@ -1,19 +1,25 @@
-package User;
+package poe.user;
 
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 
 
 @ManagedBean
 @RequestScoped
 
+@Entity
 public class User implements Serializable {
 	
 
     private static final long serialVersionUID = 1L;
-
+@Id
+@GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
     
 	private String  nom;
