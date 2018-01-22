@@ -29,18 +29,11 @@
 		<div>
 			<h:outputLabel value="Mot de passe : " />
 			<h:inputSecret id="motPasse" value="#{userController.user.motPasse}" binding="#{motPasse}">
-				<f:attribute name="attribuMotPasse" value="#{motPasse}" />
+				<f:attribute name="attributMotPasse" value="#{motPasse}" />
 			</h:inputSecret>
-		</div>
-		<div>
-			<h:outputLabel value="Confirmation Mot de passe : " />
-			<h:inputSecret id="motPasseConfirme" value="#{userController.user.motPasse}" binding="#{motPasseConfirme}">
-				<f:attribute name="attributMotPasseConfirme" value="#{motPasseConfirme}" />
-			</h:inputSecret>
-			 <h:message for="motPasseConfirme"/>
 		</div>
 		  </fieldset>
-		<h:commandButton value="Add" action="#{userController.add}" />
+		<h:commandButton value="Add" action="#{userController.add(userController.user)}" />
 	</h:form>
 
 </h:body>

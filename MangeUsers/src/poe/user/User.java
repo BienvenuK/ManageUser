@@ -15,9 +15,8 @@ import javax.persistence.Id;
 
 @Entity
 public class User implements Serializable {
-	
 
-    private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
@@ -26,9 +25,6 @@ public class User implements Serializable {
     private String prenom;
     private String email;
     private String motPasse;
-    
-    
-    
     
     public User(long id, String nom, String prenom, String email, String motPasse) {
 		super();

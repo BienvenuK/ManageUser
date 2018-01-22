@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Detail utilisateur</title>
+	<h:outputStylesheet library="default" name="css/form.css" />
+</h:head>
+<h:body>
+
+
+
+
+	<h:form>
+
+		<h:dataTable
+			styleClass="order-table" headerClass="order-table-header"
+			rowClasses="order-table-odd-row,order-table-even-row">
+
+			<h:column>
+
+				<f:facet name="header">Nom</f:facet>
+    				
+    				#{user.nom}
+    			</h:column>
+
+			<h:column>
+				<f:facet name="header">Prenom </f:facet>
+    				#{user.prenom}
+    			</h:column>
+
+			<h:column>
+				<f:facet name="header">Email</f:facet>
+    				#{user.email}
+    			</h:column>
+			<h:column>
+				<h:commandButton value="#{user.id}"
+					action="userController.delete(user)" />
+			</h:column>
+			<h:column>
+			<h:commandButton value="Edit #{user.id}"
+				action="inscription" />
+			</h:column>
+			
+		</h:dataTable>
+
+
+
+
+
+
+	</h:form>
+
+</h:body>
+</html>
+
+
+
+
+
+
