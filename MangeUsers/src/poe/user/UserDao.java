@@ -47,6 +47,8 @@ public class UserDao  {
 	
 	
 	public  void edit (User user) {
-		em.persist(user);
+		em.merge(user);
 	}
+	
+	
 }

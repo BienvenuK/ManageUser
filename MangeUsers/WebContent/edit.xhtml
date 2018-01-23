@@ -4,6 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	
+	
 <h:head>
 	<title> Inscription </title>
 	 <h:outputStylesheet library="default" name="css/form.css"  />
@@ -16,7 +17,7 @@
 	<h:form>
 	
 	  <fieldset>
-	  <legend>Inscription</legend>
+	  <legend>Edit</legend>
 		
 		<div>
 			<h:outputLabel value="Email : " />
@@ -25,6 +26,8 @@
 			</h:inputText>
 			 <h:message for="email"/>
 		</div>
+		<DIV><h:inputHidden  value="#{userController.user.id}">
+		</h:inputHidden>      </DIV>
 		
 		<div>
 			<h:outputLabel value="Mot de passe : " />
@@ -33,13 +36,12 @@
 			</h:inputSecret>
 		</div>
 		  </fieldset>
-		<h:commandButton value="Add" action="#{userController.add(userController.user)}" />
-		<h:commandButton value="Liste des utuilisateurs" action="ListeUsers"></h:commandButton>
-		
+		<h:commandButton value="Update" action="#{userController.update(userController.user)}" />
 	</h:form>
 
 </h:body>
 </html>
+
 
 
 
