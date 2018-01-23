@@ -40,7 +40,7 @@
 					action="#{userController.delete(user)}" />
 			</h:column>
 			<h:column>
-			<h:commandButton value="Edit" 
+			<h:commandButton value="Edit #{(user.id)}" 
 				action="#{userController.edit(user.id)}" />
 			</h:column>
 			<h:column>
