@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<h:head>
+	<title> Add Track </title>
+	 <h:outputStylesheet library="default" name="css/form.css"  />
+</h:head>
+<h:body>
+
+
+
+
+	<h:form>
+	
+	  <fieldset>
+	  <legend>Add Track </legend>
+		
+		<div>
+			<h:outputLabel value="Titre : " />
+			<h:inputText id="titre" value="#{trackController.track.titre}">
+				<f:attribute name="attributTitre" value="#{titre}" />
+			</h:inputText>
+			 <h:message for="titre"/>
+		</div>
+		
+		<div>
+			<h:outputLabel value="Artiste : " />
+			<h:inputText id="artiste" value="#{trackController.track.artiste}" binding="#{artiste}">
+				<f:attribute name="attributArtiste" value="#{artiste}" />
+			</h:inputText>
+			 <h:message for="artiste"/>
+		</div>
+		  </fieldset>
+		<h:commandButton value="Add" action="#{trackController.add(trackController.track)}" />
+		<h:commandButton value="Liste des tracks" action="trackList"></h:commandButton>
+		
+	</h:form>
+
+</h:body>
+</html>
+
+
+
+
+
+

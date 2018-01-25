@@ -2,6 +2,8 @@ package poe.user;
 
 import java.io.Serializable;
 import java.lang.ProcessBuilder.Redirect;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -17,12 +19,16 @@ public class UserController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private User user;
+	private Track track;
 
 	@EJB
 	UserDao userDao;
+	@EJB
+	TrackDao trackDao;
 
 	public UserController() {
-		user = new  User();
+		user = new User();
+		track = new Track();
 	}
 
 	public String add(User user) {
@@ -31,25 +37,31 @@ public class UserController implements Serializable {
 		return "ListeUsers";
 	}
 
-	public List<User> getUsersList(){
+	public List<User> getUsersList() {
 		return userDao.getUsersListDao();
 	}
 
 	public void delete(User user) {
 		userDao.deleteDao(user);
 	}
-	
+
 	public void delete() {
-		System.out.println(this.user.getId()+"utilisateur a supprimer");
+		System.out.println(this.user.getId() + "utilisateur a supprimer");
 		this.setUser(userDao.getUserByIdDao(user.getId()));
 		userDao.deleteDao(this.user);
 	}
 
 	public User getUserById(long id) {
+		System.out.println(id);
 		return userDao.getUserByIdDao(id);
 	}
 
-	public  String showUser( long id) {
+	public Collection<Track> getTracksForUserById() {
+		System.out.println(user.getId());
+		return userDao.getUserByIdDao(user.getId()).getTracks();
+	}
+	
+	public String showUser(long id) {
 
 		User user = getUserById(id);
 		this.user = user;
@@ -66,10 +78,9 @@ public class UserController implements Serializable {
 
 	public String update(User user) {
 		this.user = user;
-		userDao.edit(this.user );
+		userDao.edit(this.user);
 
 		return "ListeUsers";
-
 
 	}
 
@@ -81,9 +92,24 @@ public class UserController implements Serializable {
 		this.user = user;
 	}
 
+	public void addTrackToUser(long idUser, long idTrack) {
+		User user = userDao.getUserByIdDao(idUser);
+		this.user = user;
+		System.out.println(idTrack + "je suis ");
+		Track track = trackDao.getTrackById(idTrack);
+		this.user.getTracks().add(track);
+		userDao.edit(user);
+	}
 
+	public Collection<Track> tracksUser(long id) {
+		if (this.user.getTracks() == null) {
+			Collection<Track> tracks = new ArrayList<>();
 
+		} else {
+			this.user.getTracks();
 
+		}
+		return this.user.getTracks();
 
-
+	}
 }

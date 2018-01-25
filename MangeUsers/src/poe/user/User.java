@@ -1,12 +1,18 @@
 package poe.user;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 
 
@@ -25,14 +31,32 @@ private static final long serialVersionUID = 1L;
     private String prenom;
     private String email;
     private String motPasse;
+    @ManyToMany(mappedBy="users",fetch = FetchType.EAGER)
+    private Collection<Track> tracks;
+   
     
-    public User(long id, String nom, String prenom, String email, String motPasse) {
+    
+    public void setTracks(Collection<Track> tracks) {
+		this.tracks = tracks;
+	}
+
+
+	public Collection<Track> getTracks() {
+		return tracks;
+	}
+
+
+	
+
+
+	public User(long id, String nom, String prenom, String email, String motPasse) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.motPasse = motPasse;
+	
 	}
     
     
@@ -71,6 +95,8 @@ private static final long serialVersionUID = 1L;
 	public void setMotPasse(String motPasse) {
 		this.motPasse = motPasse;
 	}
+	
+	
 	
 	
 

@@ -15,19 +15,28 @@
 
 	<h:form>
 
-	<h:inputHidden value="#{userController.user.id}"></h:inputHidden>
+		<h:inputHidden value="#{userController.user.id}"></h:inputHidden>
 
 			
 			
 			
     				Votre email est #{userController.user.email}
-    			
-				<h:commandButton value="Delete"
-					action="#{userController.delete()}" />
-			
-			<h:commandButton value="Edit"
-				action="#{userController.edit(userController.user.id)}" />
-			
+    				
+    				
+
+
+<h:selectOneMenu value = "#{track.id}" >
+    <f:selectItems value="#{trackController.TracksList()}" var="track" itemValue="#{track.id}" itemLabel="#{track.titre}" />
+</h:selectOneMenu>	<h:commandButton value="Add track" action="#{userController.addTrackToUser(userController.user.id,track.id)}" />
+	<f:attribute name="attributEmail" value="#{email}" />
+
+
+
+		<h:commandButton value="Delete" action="#{userController.delete()}" />
+
+		<h:commandButton value="Edit"
+			action="#{userController.edit(userController.user.id)}" />
+
 	</h:form>
 
 </h:body>

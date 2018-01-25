@@ -7,6 +7,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
@@ -25,11 +26,14 @@ public class UserService {
 	@GET
 	@Produces("application/json")
 	@Path("/show")
-	public User show(@QueryParam("id") long id) {
-		
+	public UserTo show(@QueryParam("id") long id) {
 	User user = userDao.getUserByIdDao(id);
-		
-		return user;
+	 UserTo userTo = UserTo.buildFrom(user);
+	
+	// création du UserTO
+	// rensiegne les champ du userTo + TrackTo
+	
+		return userTo; // userTO
 		
 	}
 	
@@ -82,5 +86,13 @@ public class UserService {
 			
 			
 		}
+	
+	 @POST
+	    @Path("playlist/add/{userId}/{trackId}")
+	    public void addTrack(@PathParam("userId") Long userId, @PathParam("trackId") Long trackId) {
+	        System.out.println("adding track " + trackId + " to user " + userId);
+	        userDao.addTrackToUserDao(userId, trackId);
+
+	    }
 
 }

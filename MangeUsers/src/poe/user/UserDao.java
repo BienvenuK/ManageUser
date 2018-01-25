@@ -2,6 +2,7 @@ package poe.user;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,6 +15,9 @@ import javax.transaction.Transactional;
 
 @Stateless
 public class UserDao  {
+	@EJB
+	TrackDao trackDao;
+	private UserController userController;
 	
 	@PersistenceContext(unitName="pu-h2")
 	private EntityManager em;
@@ -48,6 +52,20 @@ public class UserDao  {
 	
 	public  void edit (User user) {
 		em.merge(user);
+	}
+	
+	public void addTrackToUserDao(long userId , long trackId) {
+		 User user = getUserByIdDao(userId);
+	        Track track = trackDao.getTrackById(trackId);
+	        user.getTracks().add(track);
+	        track.getUsers().add(user);
+	        System.out.println("user tracks + " + user.getTracks().size());
+	        em.persist(user);
+	        System.out.println("user tracks + " + user.getTracks().size());
+		
+		
+		
+		
 	}
 	
 	

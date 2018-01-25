@@ -5,7 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-	<title>Liste des utilisateurs</title>
+	<title>Liste des tracks</title>
 	<h:outputStylesheet library="default" name="css/form.css" />
 </h:head>
 <h:body>
@@ -15,40 +15,37 @@
 
 	<h:form>
 
-		<h:dataTable value="#{userController.getUsersList()}" var="user"
+		<h:dataTable value="#{trackController.TracksList()}" var="track"
 			styleClass="order-table" headerClass="order-table-header"
 			rowClasses="order-table-odd-row,order-table-even-row">
-<h:inputHidden value="#{userController.user.id}"></h:inputHidden>
+
 			<h:column>
 
-				<f:facet name="header">Nom</f:facet>
+				<f:facet name="header">Titre</f:facet>
     				
-    				#{userController.user.nom}
+    				#{track.titre}
     			</h:column>
 
 			<h:column>
-				<f:facet name="header">Prenom </f:facet>
-    				#{user.prenom}
+				<f:facet name="header">Nom artiste </f:facet>
+    				#{track.artiste}
     			</h:column>
 
-			<h:column>
-				<f:facet name="header">Email</f:facet>
-    				#{user.email}
-    			</h:column>
+		
 			<h:column>
 				<h:commandButton value="Delete"
-					action="#{userController.delete(user)}" />
+					action="#{trackController.delete(track)}" />
 			</h:column>
 			<h:column>
-			<h:commandButton value="Edit #{(user.id)}" 
-				action="#{userController.edit(user.id)}" />
+			<h:commandButton value="Edit #{(track.id)}" 
+				action="#{trackController.edit(track.id)}" />
 			</h:column>
 			<h:column>
 			<h:commandButton value="Show"
-				action="#{userController.showUser(user.id)}" />
+				action="#{trackController.showUser(track.id)}" />
 			</h:column>
 		</h:dataTable>
-		<h:commandButton value="Add" action="inscription" />
+		<h:commandButton value="Add" action="addTrack" />
 	</h:form>
 	
 
