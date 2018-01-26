@@ -31,7 +31,7 @@ private static final long serialVersionUID = 1L;
     private String prenom;
     private String email;
     private String motPasse;
-    @ManyToMany(mappedBy="users",fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy="users",fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     private Collection<Track> tracks;
    
     

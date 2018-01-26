@@ -11,16 +11,9 @@ public class TrackTo {
 		     String titre;
 		 
 		     String artiste;
-		     private Collection<UserTo>users;
+		    
 		 
-		     public Collection<UserTo> getUsers() {
-				return users;
-			}
-
-			public void setUsers(Collection<UserTo> users) {
-				this.users = users;
-			}
-
+		    
 			public String getTitre() {
 		         return titre;
 		     }
@@ -50,7 +43,7 @@ public class TrackTo {
 		             userTo.setPassword(user.getMotPasse());
 		             users.add(userTo);
 		         }
-		         trackTo.setUsers(users);
+		      
 		         return trackTo;
 		 
 		 }

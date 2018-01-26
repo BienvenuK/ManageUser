@@ -27,14 +27,10 @@ public class UserDao  {
 		em.persist(user);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<User> getUsersListDao(){
 		
-		 CriteriaBuilder lCriteriaBuilder = em.getCriteriaBuilder();
-       CriteriaQuery<User> lCriteriaQuery = lCriteriaBuilder.createQuery(User.class);
-      Root<User> lRoot = lCriteriaQuery.from(User.class);
-        lCriteriaQuery.select(lRoot);
-       TypedQuery<User> lTypedQuery = em.createQuery(lCriteriaQuery);
-        return lTypedQuery.getResultList();
+		 return em.createQuery("select e from User e").getResultList();
 	}
 	
 	
@@ -65,6 +61,16 @@ public class UserDao  {
 		
 		
 		
+		
+	}
+	
+	public void deleteTrackFromUser(long idUser, long idTrack) {
+		
+		User user = getUserByIdDao(idUser);
+		Track track = trackDao.getTrackById(idTrack);
+		user.getTracks().remove(track);
+		track.getUsers().remove(user);
+		em.persist(user);
 		
 	}
 	

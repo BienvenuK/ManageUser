@@ -112,4 +112,11 @@ public class UserController implements Serializable {
 		return this.user.getTracks();
 
 	}
+	
+public void deleteTrackFromUser(long idUser, long idTrack) {
+	userDao.deleteTrackFromUser(idUser, idTrack);
+		
+	}
+
 }
+	

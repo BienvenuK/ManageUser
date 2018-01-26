@@ -94,5 +94,11 @@ public class UserService {
 	        userDao.addTrackToUserDao(userId, trackId);
 
 	    }
+	 
+	 @DELETE
+	     @Path("{userId}/{trackId}")
+	   public void deleteTrackFromUser(@PathParam("userId") Long userId, @PathParam("trackId") Long trackId) {
+	         userDao.deleteTrackFromUser(userId, trackId);
+	     }
 
 }
