@@ -1,5 +1,6 @@
 package api;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -55,11 +56,19 @@ public class UserService {
 	@GET
 	@Produces("application/json")
 	@Path("/ListUsers")
-	public List<User> list() {
+	public List<UserTo> list() {
 		
-			return userDao.getUsersListDao();
+		List<UserTo> users = new ArrayList<>();
+		
 			
-			
+			for (User user : userDao.getUsersListDao()) {
+				
+				 UserTo userTo = UserTo.buildFrom(user);
+				 users.add(userTo);
+				 
+				
+			}
+			return users;
 		}
 	
 	@POST
